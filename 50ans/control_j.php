@@ -1,6 +1,6 @@
 <?php
     
-    $db = mysqli_connect('localhost', 'root', 'root', 'rudhweb');
+    $db = mysqli_connect('localhost', '', '', 'rudhweb');
     $username = $_POST["in_1"];
     
 
