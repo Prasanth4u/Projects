@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', 'root', 'rudhweb');
+$db = mysqli_connect('localhost', '', '', 'rudhweb');
 
 $sel = mysqli_query($db,"select * from ans50");
 $data = array();
