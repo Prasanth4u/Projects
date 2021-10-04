@@ -1,0 +1,67 @@
+<html>
+
+<head>
+  <title>Total Sale</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="../../asset/images/icons/list.png" />
+
+  <script src="../../asset/vendor_tbl/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../asset/vendor_tbl/bootstrap.min.css" />
+  <script src="../../asset/vendor_tbl/jquery.dataTables.min.js"></script>
+  <script src="../../asset/vendor_tbl/dataTables.bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../../asset/vendor_tbl/dataTables.bootstrap.min.css" />
+  <script src="../../asset/vendor_tbl/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container box">
+    <div class="container-fluid text-center text-primary">
+      <h2><b>FuStore - Total Purchase</b></h2>
+    </div>
+    <br/>
+    <div class="table-responsive">
+      <table id="order_data" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Coustomer Name</th>
+            <th>Date Of Purchase</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <th colspan="3">Total</th>
+            <th id="total_order"></th>
+          </tr>
+        </tfoot>
+      </table>
+      <br />
+      <br />
+      <br />
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script type="text/javascript" language="javascript">
+  $(document).ready(function() {
+
+    var dataTable = $('#order_data').DataTable({
+      "processing": true,
+      "serverSide": true,
+      "order": [],
+      "ajax": {
+        url: "../php/tot_fetch.php",
+        type: "POST"
+      },
+      drawCallback: function(settings) {
+        $('#total_order').html(settings.json.total);
+      }
+    });
+
+  });
+</script>

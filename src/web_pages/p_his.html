@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- Required meta tags-->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" type="image/png" href="../../asset/images/icons/user.png" />
+
+	<!-- Title Page-->
+	<title>History Sub</title>
+
+	<!-- Fontfaces CSS-->
+	<link href="../../asset/co/css/font-face.css" rel="stylesheet" media="all">
+	<link href="../../asset/co/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+	<link href="../../asset/co/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+	<link href="../../asset/co/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+	<!-- Bootstrap CSS-->
+	<link href="../../asset/co/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+	<!-- Vendor CSS-->
+	<link href="../../asset/co/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+	<link href="../../asset/co/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+	<link href="../../asset/co/vendor/wow/animate.css" rel="stylesheet" media="all">
+	<link href="../../asset/co/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+	<link href="../../asset/co/vendor/slick/slick.css" rel="stylesheet" media="all">
+	<link href="../../asset/co/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+	<link href="../../asset/co/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+	<!-- Main CSS-->
+	<link href="../../asset/co/css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+	<div class="page-wrapper">
+
+
+		<!-- MAIN CONTENT-->
+		<script type="text/javascript" src="../../asset/js/angular.min.js"> </script>
+		<div ng-app="myApp" ng-controller="cntrl">
+			<div class="main-content">
+				<div class="section__content section__content--p30">
+					<div class="container-fluid">
+						<div class="row">
+
+							<div class="col-lg-6">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<!-- DATA TABLE -->
+								<h3 align="center" class="title-5 m-b-35">Your Purchase History</h3>
+								<center><input type="button" onclick="SumBill()" class="btn btn-primary" value="GetData" ng-click="getdata()">
+									<center>
+							</div>
+						</div>
+
+						<div class="row m-t-30">
+							<div class="col-md-12">
+								<!-- DATA TABLE-->
+								<div class="table-responsive m-b-40">
+									<table id="table" class="table table-borderless table-data3">
+										<thead>
+											<tr>
+												<th>Item Name</th>
+												<th>Cost</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="b_his in data">
+												<td>{{b_his.sno}}</td>
+												<td>{{b_his.bh_Cname}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="container">
+									<h4><span id="val"></span></h4>
+									<!-- button to get sumtotal -->
+									<!-- <button type="button" onclick="SumBill()">Get Total</button> -->
+								</div>
+								<!-- END DATA TABLE-->
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="copyright">
+									<p>Copyright © 2020 Fustore. Project by Prasanth & Haridoss.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('cntrl', function($scope, $http, $compile) {
+			'use strict';
+			$scope.obj = {
+				'idisable': false
+			};
+			$scope.btnName = "GetData";
+
+			$scope.getdata = function() {
+				$http.get("../php/sel_bill_amt.php")
+					.success(function(data) {
+						$scope.data = data
+					})
+			}
+		});
+	</script>
+
+	<script>
+		function SumBill() {
+			var table = document.getElementById("table"),
+				sumVal = 0;
+
+			for (var i = 1; i < table.rows.length; i++) {
+				sumVal = sumVal + parseInt(table.rows[i].cells[3].innerHTML);
+			}
+			document.getElementById("val").innerHTML = "Total= " + sumVal;
+			console.log(sumVal);
+		}
+	</script>
+	<!-- Jquery JS-->
+	<script src="../../asset/co/vendor/jquery-3.2.1.min.js"></script>
+	<!-- Bootstrap JS-->
+	<script src="../../asset/co/vendor/bootstrap-4.1/popper.min.js"></script>
+	<script src="../../asset/co/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+	<!-- Vendor JS       -->
+	<script src="../../asset/co/vendor/slick/slick.min.js">
+	</script>
+	<script src="../../asset/co/vendor/wow/wow.min.js"></script>
+	<script src="../../asset/co/vendor/animsition/animsition.min.js"></script>
+	<script src="../../asset/co/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+	</script>
+	<script src="../../asset/co/vendor/counter-up/jquery.waypoints.min.js"></script>
+	<script src="../../asset/co/vendor/counter-up/jquery.counterup.min.js">
+	</script>
+	<script src="../../asset/co/vendor/circle-progress/circle-progress.min.js"></script>
+	<script src="../../asset/co/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+	<script src="../../asset/co/vendor/chartjs/Chart.bundle.min.js"></script>
+	<script src="../../asset/co/vendor/select2/select2.min.js">
+	</script>
+
+	<!-- Main JS-->
+	<script src="../../asset/co/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
