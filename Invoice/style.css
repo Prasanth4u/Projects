@@ -1,0 +1,56 @@
+/* 
+AUTHOR: PRASANTH P
+Domain: prasanthrudh.00webhost.com
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@400;500&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.textArea{
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.textArea h1{
+    /* text-transform: uppercase; */
+    font-weight: 500;
+    font-size: 30px;
+    color: #2364AA;
+    font-family: 'Playfair Display', serif;
+}
+.textArea p{
+    font-size: 18px;
+    font-weight: 500;
+}
+.textArea span{
+    color: #F9564F;
+}
+.textArea .textN{
+    border-right: 2px solid black;
+}
+
+.textArea .outText{
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.formArea{
+    margin: 20px 15px;
+}
+.tableArea{
+    margin: 20px 15px;
+}
+/* .css-serial {
+    counter-reset: serial-number;
+  }
+  
+.css-serial td:first-child:before {
+   counter-increment: serial-number;  
+   content: counter(serial-number);  
+} */
